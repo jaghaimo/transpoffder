@@ -1,0 +1,25 @@
+# Local development files
+.classpath
+.gradle/
+.project
+.settings/
+/*.zip
+bin/
+build/
+gradle.properties
+node_modules/
+package-lock.json
+# VSCode
+.vscode/**/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+# Local copies of mod structure (dev env)
+/*.jar
+/data
+/exclude
+/graphics
+/stelnet*
+/translate
+/mod_info.json
