@@ -6,7 +6,7 @@ import com.fs.starfarer.api.Global;
 public class TranspoffderMod extends BaseModPlugin {
 
     @Override
-    public void onNewGame() {
+    public void onNewGameAfterTimePass() {
         onGameLoad(true);
     }
 

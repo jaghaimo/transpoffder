@@ -9,6 +9,9 @@ public class LocationChangedListener implements CurrentLocationChangedListener {
 
     @Override
     public void reportCurrentLocationChanged(LocationAPI prev, LocationAPI curr) {
+        if (prev == null || curr == null) {
+            return;
+        }
         if (curr.isHyperspace()) {
             Global.getSector().getPlayerFleet().getAbility(Abilities.TRANSPONDER).deactivate();
         }
