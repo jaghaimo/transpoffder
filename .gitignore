@@ -20,6 +20,6 @@ package-lock.json
 /data
 /exclude
 /graphics
-/stelnet*
+/transpoffder*
 /translate
 /mod_info.json
