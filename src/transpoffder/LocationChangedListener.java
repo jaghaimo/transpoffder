@@ -1,6 +1,7 @@
 package transpoffder;
 
 import com.fs.starfarer.api.Global;
+import com.fs.starfarer.api.campaign.CampaignFleetAPI;
 import com.fs.starfarer.api.campaign.LocationAPI;
 import com.fs.starfarer.api.campaign.listeners.CurrentLocationChangedListener;
 import com.fs.starfarer.api.impl.campaign.ids.Abilities;
@@ -12,8 +13,13 @@ public class LocationChangedListener implements CurrentLocationChangedListener {
         if (prev == null || curr == null) {
             return;
         }
+        CampaignFleetAPI playerFleet = Global.getSector().getPlayerFleet();
+        if (playerFleet == null) {
+            return;
+        }
         if (curr.isHyperspace()) {
-            Global.getSector().getPlayerFleet().getAbility(Abilities.TRANSPONDER).deactivate();
+            playerFleet.setTransponderOn(false);
+            playerFleet.getAbility(Abilities.TRANSPONDER).deactivate();
         }
     }
 }
