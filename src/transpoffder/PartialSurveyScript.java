@@ -60,6 +60,6 @@ public class PartialSurveyScript implements EveryFrameScript {
             return;
         }
         log.info("Setting " + name + " survey level");
-        market.setSurveyLevel(SurveyLevel.PRELIMINARY);
+        Misc.setPreliminarySurveyed(market, null, true);
     }
 }
