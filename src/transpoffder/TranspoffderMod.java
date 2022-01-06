@@ -14,11 +14,6 @@ public class TranspoffderMod extends BaseModPlugin {
     }
 
     @Override
-    public void onNewGameAfterTimePass() {
-        onGameLoad(true);
-    }
-
-    @Override
     public void onGameLoad(boolean newGame) {
         if (hasQol("PartialSurveyAsYouFly")) {
             addTransientScript(new PartialSurveyScript());
