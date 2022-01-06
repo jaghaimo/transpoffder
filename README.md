@@ -10,14 +10,14 @@ Also changes some vanilla settings:
 -   `enableUIStaticNoise` (false instead of true), and
 -   `uiFadeSpeedMult` (10000 instead of 1, disable UI fade animation).
 
-## TranspOFFder
+## Transponder Off in Hyperspace
 
-Automatically turn off your transponder whenever you transition to Hyperspace.
+Automatically turn off fleet transponder whenever transitioning to Hyperspace.
 
 ## Better Active Sensor Burst
 
 Do not disable Sustained Burn when using Active Sensor Burst.
-Fleet will move slowly for the cooldown duration (instead of doing full stop).
+Fleet will move slowly for the cool-down duration (instead of doing full stop).
 
 ## Scavenge as You Fly
 
