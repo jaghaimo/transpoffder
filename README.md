@@ -1,6 +1,14 @@
 # Sensible World of Starsector
 
+A collection of QoL improvements to campaign layer of Starsector.
 Safe to install and uninstall mid-game.
+Also changes some vanilla settings:
+
+-   `altMouseMoveToMassTransfer` (true instead of false),
+-   `campaignSpeedupMult` (4 instead of 2),
+-   `enableShipExplosionWhiteout` (false instead of true),
+-   `enableUIStaticNoise` (false instead of true), and
+-   `uiFadeSpeedMult` (10000 instead of 1, disable UI fade animation).
 
 ## TranspOFFder
 
