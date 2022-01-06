@@ -1,6 +1,7 @@
-# Sensible World of Starsector
+# Transponder Off
 
 A collection of QoL improvements to campaign layer of Starsector.
+Named after first QoL addition - Transponder Off, or just `transpoffder`.
 Safe to install and uninstall mid-game.
 Also changes some vanilla settings.
 
