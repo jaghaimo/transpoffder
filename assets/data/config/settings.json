@@ -1,0 +1,14 @@
+{
+    # Mod settings (toggles)
+    "BetterSensorBurst": true,
+    "PartialSurveyAsYouFly": true,
+    "ScavengeAsYouFly": true,
+    "Transpoffder": true,
+    
+    # Base game settings (defaults in a comment)
+    "altMouseMoveToMassTransfer": true,# false
+    "campaignSpeedupMult": 4,# 2
+    "enableShipExplosionWhiteout": false, # true
+    "enableUIStaticNoise": false,# true
+    "uiFadeSpeedMult": 10000,# 1 (10000 disables animation)
+}

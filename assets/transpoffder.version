@@ -1,10 +1,10 @@
 {
     "masterVersionFile": "https://raw.githubusercontent.com/jaghaimo/transpoffder/master/assets/transpoffder.version",
-    "modName": "TranspOFFder",
+    "modName": "Sensible World of Starsector",
     "modThreadId": 23545,
     "modVersion": {
         "major": 1,
-        "minor": 0,
-        "patch": 2
+        "minor": 1,
+        "patch": 0
     }
 }
