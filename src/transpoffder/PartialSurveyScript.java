@@ -22,17 +22,7 @@ public class PartialSurveyScript implements EveryFrameScript {
             return;
         }
         for (PlanetAPI planet : system.getPlanets()) {
-            if (!isInRange(fleet, planet)) {
-                log.debug("Skipping " + planet.getName() + " as it is too far away");
-                continue;
-            }
-            MarketAPI market = planet.getMarket();
-            if (!canScan(market)) {
-                log.debug("Skipping " + planet.getName() + " as it already has info");
-                continue;
-            }
-            log.info("Setting survey level to preliminary for " + planet.getName());
-            market.setSurveyLevel(SurveyLevel.PRELIMINARY);
+            process(fleet, planet);
         }
     }
 
@@ -56,5 +46,20 @@ public class PartialSurveyScript implements EveryFrameScript {
 
     private boolean isInRange(CampaignFleetAPI fleet, SectorEntityToken token) {
         return Misc.getDistance(fleet, token) < fleet.getSensorStrength();
+    }
+
+    private void process(CampaignFleetAPI fleet, PlanetAPI planet) {
+        String name = planet.getName();
+        if (!isInRange(fleet, planet)) {
+            log.debug("Skipping " + name + " as it is too far away");
+            return;
+        }
+        MarketAPI market = planet.getMarket();
+        if (!canScan(market)) {
+            log.debug("Skipping " + name + " as it already has info");
+            return;
+        }
+        log.info("Setting " + name + " survey level");
+        market.setSurveyLevel(SurveyLevel.PRELIMINARY);
     }
 }
