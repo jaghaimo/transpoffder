@@ -20,6 +20,9 @@ public class ScavengeScript implements EveryFrameScript {
 
     @Override
     public void advance(float amount) {
+        if (amount == 0) {
+            return;
+        }
         CampaignFleetAPI playerFleet = Global.getSector().getPlayerFleet();
         AbilityPlugin scavenge = playerFleet.getAbility(Abilities.SCAVENGE);
         if (scavenge.isUsable()) {
