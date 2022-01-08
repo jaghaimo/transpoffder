@@ -1,14 +1,25 @@
 {
-    # Mod settings (toggles)
-    "BetterSensorBurst": true,
-    "PartialSurveyAsYouFly": true,
-    "ScavengeAsYouFly": true,
-    "Transpoffder": true,
+    ## Vanilla settings tweaks. Delete file if these feels odd ##
     
-    # Base game settings (defaults in a comment)
-    "altMouseMoveToMassTransfer": true,# false
-    "campaignSpeedupMult": 4,# 2
-    "enableShipExplosionWhiteout": false, # true
-    "enableUIStaticNoise": false,# true
-    "uiFadeSpeedMult": 10000,# 1 (10000 disables animation)
+    # Press alt while hovering on cargo stacks to quickly transfer (or buy or sell) items.
+    # Default: false
+    "altMouseMoveToMassTransfer": true,
+
+    # Speed multiplier in campaign mode (when pressing shift).
+    # Default: 2
+    "campaignSpeedupMult": 4,
+    
+    # Would you like to be blind at the age of 40? Yes to make screen go white on ship explosion.
+    # Default: true
+    "enableShipExplosionWhiteout": false,
+    
+    # These two make the UI windows instantly show up (no noise effect, and no animation delay).
+    # Default: true
+    "enableUIStaticNoise": false,
+    # Default: 1
+    "uiFadeSpeedMult": 10000,
+
+    # Recovery dialog shows both normal and difficult recoveries at the same time.
+    # Default: false
+    "shipRecoveryDialogShowBothListsAtOnce": true
 }
