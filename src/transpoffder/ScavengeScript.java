@@ -5,8 +5,13 @@ import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.CampaignFleetAPI;
 import com.fs.starfarer.api.characters.AbilityPlugin;
 import com.fs.starfarer.api.impl.campaign.ids.Abilities;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 public class ScavengeScript implements EveryFrameScript {
+
+    private final double cooldown;
+    private float advanced = 0;
 
     @Override
     public boolean isDone() {
@@ -20,13 +25,16 @@ public class ScavengeScript implements EveryFrameScript {
 
     @Override
     public void advance(float amount) {
-        if (amount == 0) {
+        advanced += amount;
+        boolean canExecute = advanced > cooldown && amount != 0;
+        if (!canExecute) {
             return;
         }
         CampaignFleetAPI playerFleet = Global.getSector().getPlayerFleet();
         AbilityPlugin scavenge = playerFleet.getAbility(Abilities.SCAVENGE);
         if (scavenge.isUsable()) {
             scavenge.activate();
+            advanced = 0;
         }
     }
 }

@@ -2,5 +2,6 @@
     "BetterSensorBurst": true,
     "PartialSurveyAsYouFly": true,
     "ScavengeAsYouFly": true,
+    "ScavengeAsYouFlyCooldown": 10,
     "Transpoffder": true
 }

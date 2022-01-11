@@ -32,7 +32,8 @@ public class TranspoffderMod extends BaseModPlugin {
             log.info("Enabled partial survey as you fly");
         }
         if (hasQol("ScavengeAsYouFly")) {
-            addTransientScript(new ScavengeScript());
+            double cooldown = settings.optDouble("ScavengeAsYouFlyCooldown", 10);
+            addTransientScript(new ScavengeScript(cooldown));
             log.info("Enabled scavenge ass you fly");
         }
         if (hasQol("Transpoffder")) {
