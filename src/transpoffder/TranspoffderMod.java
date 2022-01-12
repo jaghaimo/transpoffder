@@ -13,6 +13,20 @@ public class TranspoffderMod extends BaseModPlugin {
     private JSONObject settings;
 
     @Override
+    public void afterGameSave() {
+        if (hasQol("ScavengeAsYouFly")) {
+            Global.getSector().getCharacterData().addAbility("auto_scavenge");
+        }
+    }
+
+    @Override
+    public void beforeGameSave() {
+        if (hasQol("ScavengeAsYouFly")) {
+            Global.getSector().getCharacterData().removeAbility("auto_scavenge");
+        }
+    }
+
+    @Override
     public void onApplicationLoad() throws Exception {
         settings = Global.getSettings().loadJSON("transpoffder.json");
         if (hasQol("BetterSensorBurst")) {
@@ -32,14 +46,14 @@ public class TranspoffderMod extends BaseModPlugin {
             log.info("Enabled partial survey as you fly");
         }
         if (hasQol("ScavengeAsYouFly")) {
-            double cooldown = settings.optDouble("ScavengeAsYouFlyCooldown", 10);
-            addTransientScript(new ScavengeScript(cooldown));
-            log.info("Enabled scavenge ass you fly");
+            Global.getSector().getCharacterData().addAbility("auto_scavenge");
+            log.info("Enabled scavenge as you fly");
         }
         if (hasQol("Transpoffder")) {
             addTransientListener(new TranspoffderListener());
             log.info("Enabled transpoffder");
         }
+        afterGameSave();
     }
 
     private void addTransientListener(Object listener) {
