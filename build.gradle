@@ -65,17 +65,9 @@ dependencies {
 }
 
 // custom tasks
-task releaseDefault(type: Zip) {
-    dependsOn build
-    archiveFileName = "${project.name}-${readModInfoJson().version}-default.zip"
-    destinationDirectory = file(rootDir)
-    from 'assets'
-    from jar
-    into project.name
-}
 task releaseVanilla(type: Zip) {
     dependsOn build
-    archiveFileName = "${project.name}-${readModInfoJson().version}-no-extra-settings.zip"
+    archiveFileName = "${project.name}-${readModInfoJson().version}.zip"
     destinationDirectory = file(rootDir)
     from ('assets') {
         excludes = ['data/config/settings.json']
@@ -83,9 +75,17 @@ task releaseVanilla(type: Zip) {
     from jar
     into project.name
 }
+task releaseSettings(type: Zip) {
+    dependsOn build
+    archiveFileName = "${project.name}-${readModInfoJson().version}-with-settings.zip"
+    destinationDirectory = file(rootDir)
+    from 'assets'
+    from jar
+    into project.name
+}
 task release() {
-    dependsOn releaseDefault
     dependsOn releaseVanilla
+    dependsOn releaseSettings
 }
 
 // methods

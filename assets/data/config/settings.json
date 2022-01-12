@@ -7,7 +7,7 @@
 
     # Speed multiplier in campaign mode (when pressing shift).
     # Default: 2
-    "campaignSpeedupMult": 4,
+    "campaignSpeedupMult": 3,
     
     # Would you like to be blind at the age of 40? Yes to make screen go white on ship explosion.
     # Default: true
