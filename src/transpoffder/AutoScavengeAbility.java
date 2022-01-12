@@ -11,6 +11,22 @@ import java.awt.Color;
 
 public class AutoScavengeAbility extends BaseToggleAbility {
 
+    public static boolean isOn() {
+        return getInstance().isActive();
+    }
+
+    public static void setOn(boolean isOn) {
+        if (isOn) {
+            getInstance().activate();
+        } else {
+            getInstance().deactivate();
+        }
+    }
+
+    private static AbilityPlugin getInstance() {
+        return Global.getSector().getPlayerFleet().getAbility("auto_scavenge");
+    }
+
     @Override
     public void advance(float amount) {
         if (amount == 0) {

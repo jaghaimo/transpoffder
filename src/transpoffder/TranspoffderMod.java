@@ -11,17 +11,20 @@ import org.json.JSONObject;
 public class TranspoffderMod extends BaseModPlugin {
 
     private JSONObject settings;
+    private boolean isAutoScavengeActive;
 
     @Override
     public void afterGameSave() {
         if (hasQol("ScavengeAsYouFly")) {
             Global.getSector().getCharacterData().addAbility("auto_scavenge");
+            AutoScavengeAbility.setOn(isAutoScavengeActive);
         }
     }
 
     @Override
     public void beforeGameSave() {
         if (hasQol("ScavengeAsYouFly")) {
+            isAutoScavengeActive = AutoScavengeAbility.isOn();
             Global.getSector().getCharacterData().removeAbility("auto_scavenge");
         }
     }
