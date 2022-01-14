@@ -7,5 +7,6 @@
     },
     "java.configuration.updateBuildConfiguration": "automatic",
     "java.import.gradle.home": "./",
-    "prettier.prettierPath": "node_modules/prettier"
+    "prettier.prettierPath": "node_modules/prettier",
+    "cSpell.words": ["Jaghaimo", "Transpoffder"]
 }

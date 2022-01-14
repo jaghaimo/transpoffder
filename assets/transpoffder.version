@@ -5,7 +5,7 @@
     "modVersion": {
         "major": 1,
         "minor": 2,
-        "patch": 0
+        "patch": 1
     },
-    "directDownloadURL": "https://github.com/jaghaimo/transpoffder/releases/download/1.2.0/transpoffder-1.2.0.zip"
+    "directDownloadURL": "https://github.com/jaghaimo/transpoffder/releases/download/1.2.1/transpoffder-1.2.1.zip"
 }
