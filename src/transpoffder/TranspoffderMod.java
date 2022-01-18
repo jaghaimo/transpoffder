@@ -10,7 +10,6 @@ import org.json.JSONObject;
 @Log4j
 public class TranspoffderMod extends BaseModPlugin {
 
-    private boolean isAutoScavengeActive;
     private JSONObject settings;
 
     @Override
@@ -29,7 +28,6 @@ public class TranspoffderMod extends BaseModPlugin {
 
     @Override
     public void onApplicationLoad() throws Exception {
-        isAutoScavengeActive = false;
         settings = Global.getSettings().loadJSON("transpoffder.json");
         if (hasQol("BetterSensorBurst")) {
             Global.getSettings().getAbilitySpec("sensor_burst").getTags().remove("burn-");
@@ -68,7 +66,7 @@ public class TranspoffderMod extends BaseModPlugin {
     }
 
     private void notifyAboutState() {
-        String state = isAutoScavengeActive ? "enabled" : "disabled";
+        String state = AutoScavengeAbility.isOn() ? "enabled" : "disabled";
         Global
             .getSector()
             .getCampaignUI()
@@ -83,12 +81,14 @@ public class TranspoffderMod extends BaseModPlugin {
     }
 
     private void removeAutoScavenge() {
-        isAutoScavengeActive = AutoScavengeAbility.isOn();
+        boolean isOn = AutoScavengeAbility.isOn();
+        Global.getSector().getMemoryWithoutUpdate().set("$transpoffderAutoScavenge", isOn);
         Global.getSector().getCharacterData().removeAbility("auto_scavenge");
     }
 
     private void restoreAutoScavenge() {
         Global.getSector().getCharacterData().addAbility("auto_scavenge");
-        AutoScavengeAbility.setOn(isAutoScavengeActive);
+        boolean isOn = Global.getSector().getMemoryWithoutUpdate().getBoolean("$transpoffderAutoScavenge");
+        AutoScavengeAbility.setOn(isOn);
     }
 }
