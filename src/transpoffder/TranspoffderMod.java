@@ -1,94 +1,28 @@
 package transpoffder;
 
 import com.fs.starfarer.api.BaseModPlugin;
-import com.fs.starfarer.api.EveryFrameScript;
-import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.util.Misc;
-import lombok.extern.log4j.Log4j;
-import org.json.JSONObject;
+import transpoffder.settings.Settings;
+import transpoffder.settings.SettingsListener;
 
-@Log4j
 public class TranspoffderMod extends BaseModPlugin {
-
-    private JSONObject settings;
 
     @Override
     public void afterGameSave() {
-        if (hasQol("ScavengeAsYouFly")) {
-            restoreAutoScavenge();
-        }
+        Settings.SCAVENGE_AS_YOU_FLY.configure();
     }
 
     @Override
     public void beforeGameSave() {
-        if (hasQol("ScavengeAsYouFly")) {
-            removeAutoScavenge();
-        }
+        Settings.SCAVENGE_AS_YOU_FLY.disable();
     }
 
     @Override
     public void onApplicationLoad() throws Exception {
-        settings = Global.getSettings().loadJSON("transpoffder.json");
-        if (hasQol("BetterSensorBurst")) {
-            Global.getSettings().getAbilitySpec("sensor_burst").getTags().remove("burn-");
-            Global.getSettings().getAbilitySpec("sensor_burst").getTags().remove("sensors+");
-            log.info("Enabled better sensor burst");
-        }
+        SettingsListener.register();
     }
 
     @Override
     public void onGameLoad(boolean newGame) {
-        if (hasQol("PartialSurveyAsYouFly")) {
-            addTransientScript(new PartialSurveyScript());
-            log.info("Enabled partial survey as you fly");
-        }
-        if (hasQol("ScavengeAsYouFly")) {
-            restoreAutoScavenge();
-            notifyAboutState();
-            log.info("Enabled scavenge as you fly");
-        }
-        if (hasQol("Transpoffder")) {
-            addTransientListener(new TranspoffderListener());
-            log.info("Enabled transpoffder");
-        }
-    }
-
-    private void addTransientListener(Object listener) {
-        Global.getSector().getListenerManager().addListener(listener, true);
-    }
-
-    private void addTransientScript(EveryFrameScript script) {
-        Global.getSector().addTransientScript(script);
-    }
-
-    private boolean hasQol(String key) {
-        return settings.optBoolean(key, true);
-    }
-
-    private void notifyAboutState() {
-        String state = AutoScavengeAbility.isOn() ? "enabled" : "disabled";
-        Global
-            .getSector()
-            .getCampaignUI()
-            .addMessage(
-                "Automatic scavenging is %s.",
-                Misc.getTextColor(),
-                state,
-                state,
-                Misc.getHighlightColor(),
-                Misc.getHighlightColor()
-            );
-    }
-
-    private void removeAutoScavenge() {
-        boolean isOn = AutoScavengeAbility.isOn();
-        Global.getSector().getMemoryWithoutUpdate().set("$transpoffderAutoScavenge", isOn);
-        Global.getSector().getCharacterData().removeAbility("auto_scavenge");
-    }
-
-    private void restoreAutoScavenge() {
-        Global.getSector().getCharacterData().addAbility("auto_scavenge");
-        boolean isOn = Global.getSector().getMemoryWithoutUpdate().getBoolean("$transpoffderAutoScavenge");
-        AutoScavengeAbility.setOn(isOn);
+        SettingsListener.configure();
     }
 }
