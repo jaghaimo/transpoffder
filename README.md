@@ -6,24 +6,24 @@ Safe to install and uninstall mid-game.
 
 Comes in two flavours: basic mod (`transpoffder-x.y.z.zip`) and mod that changes some settings (see below, `transpoffder-x.y.z-with-settings.zip`).
 
-## Transponder Off in Hyperspace
-
-Automatically turn off fleet transponder when transitioning to Hyperspace.
-
 ## Better Active Sensor Burst
 
 Do not disable Sustained Burn or Neutrino Detector when using Active Sensor Burst.
 Fleet will move slowly for the cool-down duration (instead of doing full stop) and resume full burn afterwards.
+
+## Partial Survey as You Fly
+
+Automatically provide partial survey for planets within your sensor range.
+No need to land on the planet any more.
 
 ## Scavenge as You Fly
 
 Use Scavenge ability as soon as it is usable.
 Toggled via new ability (blue Scavenge icon).
 
-## Partial Survey as You Fly
+## Transponder Off in Hyperspace
 
-No need to "touch" the planet any more.
-Automatically provide partial survey for planets within your sensor range.
+Automatically turn off fleet transponder when transitioning to Hyperspace.
 
 ## Vanilla Settings Changed
 
