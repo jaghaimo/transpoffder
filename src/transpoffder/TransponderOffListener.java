@@ -6,7 +6,7 @@ import com.fs.starfarer.api.campaign.LocationAPI;
 import com.fs.starfarer.api.campaign.listeners.CurrentLocationChangedListener;
 import com.fs.starfarer.api.impl.campaign.ids.Abilities;
 
-public class TranspoffderListener implements CurrentLocationChangedListener {
+public class TransponderOffListener implements CurrentLocationChangedListener {
 
     @Override
     public void reportCurrentLocationChanged(LocationAPI prev, LocationAPI curr) {

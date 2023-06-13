@@ -1,0 +1,6 @@
+fieldID,fieldName,fieldType,defaultValue,secondaryValue,fieldDescription,minValue,maxValue,tab
+,,,,,,,,
+BetterActiveBurst,Better Active Burst,Boolean,true,,"Slow down fleet movement (instead of full-stop) and resume Sustained Burn (if it was active) after the cooldown.",,,
+PartialSurveyAsYouFly,Partial Survey As You Fly,Boolean,true,,"Automatically provide partial survey for planets within your sensor range. No need to land on the planet anymore.",,,
+ScavengeAsYouFly,Scavenge As You Fly,Boolean,true,,"Use Scavenge ability as soon as it is usable. Toggled via new ability (blue Scavenge icon).",,,
+TransponderOff,Transponder Off in Hyperspace,Boolean,true,,"Automatically turn off fleet transponder when transitioning to Hyperspace.",,,

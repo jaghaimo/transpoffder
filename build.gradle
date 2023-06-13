@@ -10,12 +10,36 @@ repositories {
         url 'https://github.com/'
         patternLayout {
             artifact '/[organization]/[module]/releases/download/[revision]/[ext]'
+            artifact '/[organization]/[module]/raw/[revision]/jars/[ext]'
         }
         metadataSources {
             artifact()
         }
     }
 }
+
+// add zipped configuration
+configurations {
+    zipped
+}
+
+// install dependencies from zipped releases
+task installDependencies(type: Sync) {
+    def extractDir = "${buildDir}/libs"
+    
+    ext.extractedJars = fileTree(extractDir) {
+        include "**/*.jar"
+        exclude "transpoffder.jar"
+        builtBy "installDependencies"
+    }
+
+    dependsOn configurations.zipped
+    from { 
+        configurations.zipped.collect { zipTree(it) }
+    }
+    into extractDir
+}
+
 // project level config
 java {
     sourceCompatibility = JavaVersion.VERSION_1_7
@@ -38,7 +62,9 @@ build {
 
 // compile time dependencies
 dependencies {
-    implementation "jaghaimo:starsector-api:0.95.1a-RC6@starfarer.api.jar"
+    implementation "jaghaimo:starsector-api:0.96a-RC10@starfarer.api.jar"
+    zipped "Lukas22041:LunaLib:1.7.7@LunaLib.zip"
+    implementation files({ tasks.installDependencies.extractedJars })
 
     // game dependencies
     implementation group: 'com.thoughtworks.xstream', name: 'xstream', version: '1.4.10'
