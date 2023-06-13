@@ -63,8 +63,8 @@ build {
 // compile time dependencies
 dependencies {
     implementation "jaghaimo:starsector-api:0.96a-RC10@starfarer.api.jar"
-    // zipped "Lukas22041:LunaLib:1.7.7@LunaLib.zip"
-    // implementation files({ tasks.installDependencies.extractedJars })
+    zipped "Lukas22041:LunaLib:1.7.7@LunaLib.zip"
+    implementation files({ tasks.installDependencies.extractedJars })
 
     // game dependencies
     implementation group: 'com.thoughtworks.xstream', name: 'xstream', version: '1.4.10'
