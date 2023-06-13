@@ -11,6 +11,10 @@ import java.awt.Color;
 
 public class AutoScavengeAbility extends BaseToggleAbility {
 
+    public static boolean has() {
+        return getInstance() != null;
+    }
+
     public static boolean isOn() {
         return getInstance().isActive();
     }

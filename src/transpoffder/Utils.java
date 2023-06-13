@@ -19,25 +19,18 @@ public class Utils {
         return Global.getSettings().getCurrentState() == GameState.CAMPAIGN;
     }
 
-    public static void notifyAboutState() {
-        String state = AutoScavengeAbility.isOn() ? "enabled" : "disabled";
+    public static void quickNotify(String text, String highlight1, String highlight2) {
         Global
             .getSector()
             .getCampaignUI()
             .addMessage(
-                "Automatic scavenging is %s.",
+                text,
                 Misc.getTextColor(),
-                state,
-                state,
+                highlight1,
+                highlight2,
                 Misc.getHighlightColor(),
                 Misc.getHighlightColor()
             );
-    }
-
-    public static void removeAutoScavenge() {
-        boolean isOn = AutoScavengeAbility.isOn();
-        Global.getSector().getMemoryWithoutUpdate().set("$transpoffderAutoScavenge", isOn);
-        Global.getSector().getCharacterData().removeAbility("auto_scavenge");
     }
 
     public static void removeTransientListeners(Class<?> clazz) {
@@ -50,11 +43,5 @@ public class Utils {
                 Global.getSector().removeTransientScript(null);
             }
         }
-    }
-
-    public static void restoreAutoScavenge() {
-        Global.getSector().getCharacterData().addAbility("auto_scavenge");
-        boolean isOn = Global.getSector().getMemoryWithoutUpdate().getBoolean("$transpoffderAutoScavenge");
-        AutoScavengeAbility.setOn(isOn);
     }
 }
