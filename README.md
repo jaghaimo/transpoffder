@@ -12,7 +12,7 @@ Automatically turn off fleet transponder when transitioning to Hyperspace.
 
 ## Better Active Sensor Burst
 
-Do not disable Sustained Burn when using Active Sensor Burst or Neutrino Detector.
+Do not disable Sustained Burn or Neutrino Detector when using Active Sensor Burst.
 Fleet will move slowly for the cool-down duration (instead of doing full stop) and resume full burn afterwards.
 
 ## Scavenge as You Fly
